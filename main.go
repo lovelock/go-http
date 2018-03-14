@@ -19,9 +19,9 @@ func foo(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	http.HandleFunc("/boy", boy)
-	http.HandleFunc("/girl", girl)
-	http.HandleFunc("/", foo)
+	http.Handle("/boy", http.HandlerFunc(boy))
+	http.Handle("/girl", http.HandlerFunc(girl))
+	http.Handle("/", http.HandlerFunc(foo))
 
 	http.ListenAndServe(":8080", nil)
 }
