@@ -1,7 +1,17 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+	"fmt"
+)
+
+type foo struct{}
+
+func (f foo) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Implement the Handler interface")
+}
 
 func main() {
-	http.ListenAndServe(":8080", nil)
+	f := foo{}
+	http.ListenAndServe(":8080", f)
 }
