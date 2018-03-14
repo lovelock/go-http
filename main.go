@@ -29,10 +29,9 @@ func main() {
 
 	b, g, f := boy{}, girl{}, foo{}
 
-	mux := http.NewServeMux()
-	mux.Handle("/boy", b)
-	mux.Handle("/girl", g)
-	mux.Handle("/", f)
+	http.Handle("/boy", b)
+	http.Handle("/girl", g)
+	http.Handle("/", f)
 
-	http.ListenAndServe(":8080", mux)
+	http.ListenAndServe(":8080", nil)
 }
